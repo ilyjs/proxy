@@ -1,0 +1,21 @@
+#STAGE 1
+FROM node:18.16.0-alpine
+
+
+
+WORKDIR /app
+COPY  sse_server.js package.json package-lock.json /app/
+
+USER 0:0
+
+RUN npm i --loglevel=info
+
+
+
+
+
+# cp -R api ui-api-web для работы без rewrite
+EXPOSE 8080
+
+
+ENTRYPOINT ["node" , "sse_server.js" ]

@@ -1,7 +1,7 @@
 var proxy = require('express-http-proxy');
 var app = require('express')();
 //"https://bridge.tonapi.io/bridge/
-app.use('/bridge', proxy('https://bridge.tonapi.io', {
+app.use('/bridge/*', proxy('https://bridge.tonapi.io', {
     userResDecorator: function(proxyRes, proxyResData, userReq, userRes) {
         console.log(12345);
         console.log("proxyRes",proxyRes)
@@ -12,3 +12,5 @@ app.use('/bridge', proxy('https://bridge.tonapi.io', {
 }));
 
 app.listen(3006);
+
+
